@@ -1,0 +1,25 @@
+backend:
+  name: github
+  repo: gabryelcastro80-web/weslany-corretora
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "imoveis"
+    label: "Imóveis"
+    folder: "content/imoveis"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título do Imóvel", name: "title", widget: "string" }
+      - { label: "Tipo / Finalidade", name: "category", widget: "select", options: ["Venda", "Aluguel", "Ponto Comercial"] }
+      - { label: "Bairro", name: "neighborhood", widget: "string" }
+      - { label: "Preço (ex: R$ 500.000)", name: "price", widget: "string" }
+      - { label: "Preço em Número (ex: 500000)", name: "rawPrice", widget: "number" }
+      - { label: "Quartos", name: "bedrooms", widget: "number", default: 1 }
+      - { label: "Banheiros", name: "bathrooms", widget: "number", default: 1 }
+      - { label: "Área (ex: 180 m²)", name: "area", widget: "string" }
+      - { label: "Foto do Imóvel", name: "image", widget: "image" }
+      - { label: "Destaque (ex: Lançamento, Exclusivo)", name: "tag", widget: "string", default: "Destaque" }
