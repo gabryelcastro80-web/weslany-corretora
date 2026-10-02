@@ -267,21 +267,6 @@
       margin: 0 auto;
     }
 
-    .empty-catalog-box i {
-      color: var(--gold-primary);
-      margin-bottom: 1rem;
-    }
-
-    .empty-catalog-box h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .empty-catalog-box p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
     .calculator-section {
       background: var(--bg-card);
       border-y: 1px solid var(--border-color);
@@ -494,19 +479,23 @@
     </div>
   </section>
 
+  <!-- SEÇÃO DE IMÓVEIS DINÂMICA -->
   <section class="catalog" id="imoveis">
     <div class="section-header">
       <h2>Imóveis Disponíveis</h2>
-      <p>Consulte nosso catálogo atualizado diretamente pelo WhatsApp</p>
+      <p>Consulte nosso catálogo atualizado</p>
     </div>
 
-    <div class="empty-catalog-box">
-      <i data-lucide="home" size="48"></i>
-      <h3>Catálogo em Atualização</h3>
-      <p>Estamos selecionando as melhores oportunidades imobiliárias de Marabá para você. Entre em contato direto para receber as fotos e detalhes dos imóveis disponíveis no momento.</p>
-      <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20gostaria%20de%20receber%20o%20cat%C3%A1logo%20de%20im%C3%B3veis%20dispon%C3%ADveis." target="_blank" class="btn-contact">
-        <i data-lucide="message-circle"></i> Solicitar Imóveis Disponíveis
-      </a>
+    <!-- MENSAGEM PADRÃO SE NÃO HOUVER IMÓVEIS -->
+    <div id="catalog-container">
+      <div class="empty-catalog-box">
+        <i data-lucide="home" size="48" style="color: var(--gold-primary); margin-bottom: 1rem;"></i>
+        <h3>Catálogo em Atualização</h3>
+        <p>Estamos selecionando as melhores oportunidades imobiliárias de Marabá para você. Entre em contato direto para receber as fotos e detalhes dos imóveis disponíveis no momento.</p>
+        <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20gostaria%20de%20receber%20o%20cat%C3%A1logo%20de%20im%C3%B3veis%20dispon%C3%ADveis." target="_blank" class="btn-contact">
+          <i data-lucide="message-circle"></i> Solicitar Imóveis Disponíveis
+        </a>
+      </div>
     </div>
   </section>
 
@@ -585,6 +574,38 @@
 
   <script>
     lucide.createIcons();
+
+    // LEITURA DO FICHÁRIO DADOS (imoveis.json)
+    fetch('./imoveis.json')
+      .then(response => response.json())
+      .then(properties => {
+        const catalogContainer = document.getElementById('catalog-container');
+        if (!properties || properties.length === 0) return;
+
+        let htmlContent = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">';
+
+        properties.forEach(item => {
+          htmlContent += `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
+              <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 220px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80'">
+              <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                <span style="color: var(--gold-primary); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">${item.tag || 'Disponível'} • ${item.category || 'Venda'}</span>
+                <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">${item.title}</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">📍 ${item.neighborhood}</p>
+                <p style="font-size: 1.3rem; font-weight: 800; color: var(--gold-light); margin-bottom: 0.8rem;">${item.price}</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">🛏️ ${item.bedrooms} quartos • 🚿 ${item.bathrooms} banheiros • 📐 ${item.area}</p>
+                <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20tenho%20interesse%20no%20im%C3%B3vel:%20${encodeURIComponent(item.title)}" target="_blank" class="btn-contact" style="width: 100%; justify-content: center; margin-top: auto;">
+                  Tenho Interesse
+                </a>
+              </div>
+            </div>
+          `;
+        });
+
+        htmlContent += '</div>';
+        catalogContainer.innerHTML = htmlContent;
+      })
+      .catch(err => console.log('Utilizando catálogo padrão:', err));
 
     function calculateLoan() {
       const value = parseFloat(document.getElementById('calc-value').value) || 0;
