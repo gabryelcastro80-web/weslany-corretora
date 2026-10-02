@@ -237,71 +237,10 @@
       font-weight: 600;
     }
 
-    .filter-section {
-      max-width: 1100px;
-      margin: -3rem auto 4rem;
-      position: relative;
-      z-index: 10;
-      padding: 0 1.5rem;
-    }
-
-    .filter-box {
-      background: var(--bg-glass);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) 150px;
-      gap: 1rem;
-      align-items: center;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .filter-group label {
-      font-size: 0.8rem;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .filter-group select {
-      background: rgba(11, 15, 25, 0.8);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      outline: none;
-      font-size: 0.95rem;
-    }
-
-    .btn-search {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-      color: #000;
-      border: none;
-      padding: 0.8rem;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: var(--transition);
-      height: 48px;
-      margin-top: auto;
-    }
-
     .catalog {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 2rem 2rem 6rem;
+      padding: 4rem 2rem 6rem;
     }
 
     .section-header {
@@ -318,129 +257,29 @@
       color: var(--text-muted);
     }
 
-    .properties-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-    }
-
-    .property-card {
+    .empty-catalog-box {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px dashed var(--border-color);
       border-radius: var(--radius);
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .property-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--border-hover);
-      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+    .empty-catalog-box i {
+      color: var(--gold-primary);
+      margin-bottom: 1rem;
     }
 
-    .property-image {
-      position: relative;
-      height: 240px;
-      overflow: hidden;
+    .empty-catalog-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
     }
 
-    .property-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .property-card:hover .property-image img {
-      transform: scale(1.05);
-    }
-
-    .property-tag {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(11, 15, 25, 0.85);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-light);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .property-price {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      background: var(--gold-primary);
-      color: #000;
-      padding: 0.4rem 1rem;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-
-    .property-content {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .property-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
-
-    .property-location {
+    .empty-catalog-box p {
       color: var(--text-muted);
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 1.2rem;
-    }
-
-    .property-features {
-      display: flex;
-      gap: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-bottom: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-details {
-      margin-top: auto;
-      width: 100%;
-      padding: 0.8rem;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-details:hover {
-      background: var(--gold-primary);
-      color: #000;
+      margin-bottom: 2rem;
     }
 
     .calculator-section {
@@ -592,10 +431,6 @@
         margin: 0 auto 2rem;
       }
 
-      .filter-box {
-        grid-template-columns: 1fr;
-      }
-
       .calc-container {
         grid-template-columns: 1fr;
       }
@@ -641,8 +476,8 @@
         <p class="hero-description">
           Atendimento personalizado no mercado imobiliário de Marabá. Casas de alto padrão, apartamentos, terrenos e pontos comerciais estratégicos.
         </p>
-        <a href="#imoveis" class="btn-contact" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
-          Explorar Catálogo <i data-lucide="arrow-right"></i>
+        <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20gostaria%20de%20consultar%20os%20im%C3%B3veis%20dispon%C3%ADveis." target="_blank" class="btn-contact" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
+          Falar com a Corretora <i data-lucide="arrow-right"></i>
         </a>
       </div>
 
@@ -659,52 +494,19 @@
     </div>
   </section>
 
-  <div class="filter-section">
-    <div class="filter-box">
-      <div class="filter-group">
-        <label>Finalidade</label>
-        <select id="filter-category">
-          <option value="todos">Todos os Tipos</option>
-          <option value="vendas">Venda</option>
-          <option value="aluguel">Aluguel</option>
-          <option value="comercial">Ponto Comercial</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label>Bairro (Marabá)</label>
-        <select id="filter-neighborhood">
-          <option value="todos">Todos os Bairros</option>
-          <option value="Nova Marabá">Nova Marabá</option>
-          <option value="Cidade Nova">Cidade Nova</option>
-          <option value="Velha Marabá">Velha Marabá</option>
-          <option value="Residencial Mirante">Residencial Mirante</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label>Faixa de Preço</label>
-        <select id="filter-price">
-          <option value="todos">Qualquer Valor</option>
-          <option value="500k">Até R$ 500.000</option>
-          <option value="1m">R$ 500k a R$ 1.000.000</option>
-          <option value="above">Acima de R$ 1.000.000</option>
-        </select>
-      </div>
-
-      <button class="btn-search" onclick="applyFilters()">
-        <i data-lucide="search"></i> Buscar
-      </button>
-    </div>
-  </div>
-
   <section class="catalog" id="imoveis">
     <div class="section-header">
-      <h2>Catálogo de Destaques</h2>
-      <p>Confira os melhores imóveis disponíveis em Marabá - PA</p>
+      <h2>Imóveis Disponíveis</h2>
+      <p>Consulte nosso catálogo atualizado diretamente pelo WhatsApp</p>
     </div>
 
-    <div class="properties-grid" id="properties-container">
+    <div class="empty-catalog-box">
+      <i data-lucide="home" size="48"></i>
+      <h3>Catálogo em Atualização</h3>
+      <p>Estamos selecionando as melhores oportunidades imobiliárias de Marabá para você. Entre em contato direto para receber as fotos e detalhes dos imóveis disponíveis no momento.</p>
+      <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20gostaria%20de%20receber%20o%20cat%C3%A1logo%20de%20im%C3%B3veis%20dispon%C3%ADveis." target="_blank" class="btn-contact">
+        <i data-lucide="message-circle"></i> Solicitar Imóveis Disponíveis
+      </a>
     </div>
   </section>
 
@@ -728,7 +530,7 @@
           <label>Prazo (Anos)</label>
           <input type="number" id="calc-years" value="30" />
         </div>
-        <button class="btn-search" onclick="calculateLoan()" style="width: 100%;">
+        <button class="btn-contact" onclick="calculateLoan()" style="width: 100%; border: none; cursor: pointer; justify-content: center; height: 48px;">
           Calcular Estimativa
         </button>
       </div>
@@ -784,120 +586,6 @@
   <script>
     lucide.createIcons();
 
-    const properties = [
-      {
-        id: 1,
-        title: "Casa de Alto Padrão com Fachada Moderna",
-        category: "vendas",
-        neighborhood: "Nova Marabá",
-        price: "R$ 850.000",
-        rawPrice: 850000,
-        bedrooms: 3,
-        bathrooms: 3,
-        area: "240 m²",
-        image: "imovel-1.jpeg",
-        tag: "Exclusivo"
-      },
-      {
-        id: 2,
-        title: "Residência Contemporânea Iluminada",
-        category: "vendas",
-        neighborhood: "Cidade Nova",
-        price: "R$ 680.000",
-        rawPrice: 680000,
-        bedrooms: 3,
-        bathrooms: 2,
-        area: "200 m²",
-        image: "imovel-2.jpeg",
-        tag: "Lançamento"
-      },
-      {
-        id: 3,
-        title: "Casa Térrea de Luxo com Pé Direito Duplo",
-        category: "vendas",
-        neighborhood: "Residencial Mirante",
-        price: "R$ 1.200.000",
-        rawPrice: 1200000,
-        bedrooms: 4,
-        bathrooms: 4,
-        area: "310 m²",
-        image: "imovel-3.jpeg",
-        tag: "Destaque"
-      },
-      {
-        id: 4,
-        title: "Imóvel Elegante com Projeto de Iluminação",
-        category: "vendas",
-        neighborhood: "Nova Marabá",
-        price: "R$ 750.000",
-        rawPrice: 750000,
-        bedrooms: 3,
-        bathrooms: 3,
-        area: "220 m²",
-        image: "imovel-4.jpeg",
-        tag: "Novo"
-      }
-    ];
-
-    function renderProperties(items) {
-      const container = document.getElementById('properties-container');
-      container.innerHTML = '';
-
-      if (items.length === 0) {
-        container.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--text-muted);">Nenhum imóvel encontrado com esses filtros.</p>';
-        return;
-      }
-
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'property-card';
-        card.innerHTML = `
-          <div class="property-image">
-            <img src="${item.image}" alt="${item.title}" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'">
-            <span class="property-tag">${item.tag}</span>
-            <div class="property-price">${item.price}</div>
-          </div>
-          <div class="property-content">
-            <h3 class="property-title">${item.title}</h3>
-            <div class="property-location">
-              <i data-lucide="map-pin" size="14"></i> ${item.neighborhood}, Marabá - PA
-            </div>
-            <div class="property-features">
-              <span class="feature-item"><i data-lucide="bed" size="16"></i> ${item.bedrooms} Qts</span>
-              <span class="feature-item"><i data-lucide="bath" size="16"></i> ${item.bathrooms} Ban</span>
-              <span class="feature-item"><i data-lucide="maximize" size="16"></i> ${item.area}</span>
-            </div>
-            <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20tenho%20interesse%20no%20im%C3%B3vel:%20${encodeURIComponent(item.title)}" target="_blank" class="btn-details">
-              Tenho Interesse <i data-lucide="arrow-up-right" size="16"></i>
-            </a>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-
-      lucide.createIcons();
-    }
-
-    function applyFilters() {
-      const category = document.getElementById('filter-category').value;
-      const neighborhood = document.getElementById('filter-neighborhood').value;
-      const price = document.getElementById('filter-price').value;
-
-      const filtered = properties.filter(item => {
-        const matchCategory = category === 'todos' || item.category === category;
-        const matchNeighborhood = neighborhood === 'todos' || item.neighborhood === neighborhood;
-        
-        let matchPrice = true;
-        if (price === '500k') matchPrice = item.rawPrice <= 500000;
-        if (price === '1m') matchPrice = item.rawPrice > 500000 && item.rawPrice <= 1000000;
-        if (price === 'above') matchPrice = item.rawPrice > 1000000;
-
-        return matchCategory && matchNeighborhood && matchPrice;
-      });
-
-      renderProperties(filtered);
-    }
-
     function calculateLoan() {
       const value = parseFloat(document.getElementById('calc-value').value) || 0;
       const entry = parseFloat(document.getElementById('calc-entry').value) || 0;
@@ -919,8 +607,6 @@
         currency: 'BRL'
       });
     }
-
-    renderProperties(properties);
   </script>
 </body>
 </html>
