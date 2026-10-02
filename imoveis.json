@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Casa de Alto Padrão",
+    "category": "Venda",
+    "neighborhood": "Cidade Nova",
+    "price": "R$ 650.000",
+    "rawPrice": 650000,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "area": "200 m²",
+    "image": "imovel-1.jpeg",
+    "tag": "Destaque"
+  }
+]
