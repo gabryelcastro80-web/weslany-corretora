@@ -1,15 +1,25 @@
 [
   {
     "id": 1,
-    "title": "Casa de Alto Padrão",
+    "title": "Riviera CASA RUBI",
     "category": "Venda",
-    "neighborhood": "Cidade Nova",
-    "price": "R$ 650.000",
-    "rawPrice": 650000,
+    "neighborhood": "Residencial Ipiranga-Nova Marabá",
+    "price": "R$ 1.250.000,00",
     "bedrooms": 3,
     "bathrooms": 2,
-    "area": "200 m²",
-    "image": "imovel-1.jpeg",
+    "area": "360 m²",
+    "images": [
+      "image-1.jpeg",
+      "image-2.jpeg",
+      "image-3.jpeg",
+      "image-4.jpeg",
+      "image-5.jpeg",
+      "image-6.jpeg",
+      "image-7.jpeg",
+      "image-8.jpeg",
+      "image-9.jpeg",
+      "image-10.jpeg"
+    ],
     "tag": "Destaque"
   }
 ]
