@@ -6,15 +6,12 @@
   <title>Weslany Rodrigues | Corretora de Imóveis - Marabá PA</title>
   <meta name="description" content="Imóveis de alto padrão, casas, apartamentos e pontos comerciais em Marabá - PA. Atendimento exclusivo por Weslany Rodrigues, CRECI 12599/PA." />
   
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -52,7 +49,6 @@
       font-family: 'Cinzel', serif;
     }
 
-    /* Header & Navigation */
     header {
       position: fixed;
       top: 0;
@@ -153,7 +149,6 @@
       box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
-    /* Hero Section */
     .hero {
       position: relative;
       min-height: 90vh;
@@ -242,7 +237,6 @@
       font-weight: 600;
     }
 
-    /* Filter Section */
     .filter-section {
       max-width: 1100px;
       margin: -3rem auto 4rem;
@@ -304,7 +298,6 @@
       margin-top: auto;
     }
 
-    /* Catalog Section */
     .catalog {
       max-width: 1300px;
       margin: 0 auto;
@@ -450,7 +443,6 @@
       color: #000;
     }
 
-    /* Calculator Section */
     .calculator-section {
       background: var(--bg-card);
       border-y: 1px solid var(--border-color);
@@ -519,7 +511,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Footer */
     footer {
       background: #060911;
       border-top: 1px solid var(--border-color);
@@ -565,7 +556,6 @@
       font-size: 0.85rem;
     }
 
-    /* Floating WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 2rem;
@@ -588,7 +578,6 @@
       transform: scale(1.1);
     }
 
-    /* Responsive Design */
     @media (max-width: 968px) {
       .hero-container {
         grid-template-columns: 1fr;
@@ -619,7 +608,6 @@
 </head>
 <body>
 
-  <!-- Header / Navbar -->
   <header>
     <div class="nav-container">
       <a href="#" class="logo-container">
@@ -643,7 +631,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-container">
       <div>
@@ -661,7 +648,7 @@
 
       <div class="hero-profile-card" id="sobre">
         <div class="profile-img-wrap">
-          <img src="./images/weslany-1.jpg" alt="Weslany Rodrigues Corretora" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'" />
+          <img src="weslany-1.JPG" alt="Weslany Rodrigues Corretora" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'" />
         </div>
         <div class="profile-info">
           <h3>Weslany Rodrigues</h3>
@@ -672,7 +659,6 @@
     </div>
   </section>
 
-  <!-- Filter Section -->
   <div class="filter-section">
     <div class="filter-box">
       <div class="filter-group">
@@ -712,7 +698,6 @@
     </div>
   </div>
 
-  <!-- Catalog Section -->
   <section class="catalog" id="imoveis">
     <div class="section-header">
       <h2>Catálogo de Destaques</h2>
@@ -720,11 +705,9 @@
     </div>
 
     <div class="properties-grid" id="properties-container">
-      <!-- Imóveis inseridos dinamicamente via JS -->
     </div>
   </section>
 
-  <!-- Simulador de Financiamento -->
   <section class="calculator-section" id="simulador">
     <div class="section-header">
       <h2>Simulador de Financiamento</h2>
@@ -760,7 +743,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-info">
@@ -781,7 +763,7 @@
       </div>
 
       <div>
-        <h4 style="color: #fff; margin-bottom: 1rem;">Contato Directo</h4>
+        <h4 style="color: #fff; margin-bottom: 1rem;">Contato Direto</h4>
         <ul class="footer-links">
           <li><i data-lucide="phone" size="14"></i> (94) 9220-9195</li>
           <li><i data-lucide="instagram" size="14"></i> @weslany.corretora</li>
@@ -795,17 +777,13 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20vi%20seu%20site%20e%20gostaria%20de%20atendimento." target="_blank" class="whatsapp-float">
     <i data-lucide="message-circle" size="32"></i>
   </a>
 
-  <!-- JavaScript -->
   <script>
-    // Inicializar ícones Lucide
     lucide.createIcons();
 
-    // Lista de Imóveis Exemplo
     const properties = [
       {
         id: 1,
@@ -817,7 +795,7 @@
         bedrooms: 3,
         bathrooms: 3,
         area: "240 m²",
-        image: "./images/imovel-1.jpg",
+        image: "imovel-1.jpeg",
         tag: "Exclusivo"
       },
       {
@@ -830,7 +808,7 @@
         bedrooms: 3,
         bathrooms: 2,
         area: "200 m²",
-        image: "./images/imovel-2.jpg",
+        image: "imovel-2.jpeg",
         tag: "Lançamento"
       },
       {
@@ -843,7 +821,7 @@
         bedrooms: 4,
         bathrooms: 4,
         area: "310 m²",
-        image: "./images/imovel-3.jpg",
+        image: "imovel-3.jpeg",
         tag: "Destaque"
       },
       {
@@ -856,12 +834,11 @@
         bedrooms: 3,
         bathrooms: 3,
         area: "220 m²",
-        image: "./images/imovel-4.jpg",
+        image: "imovel-4.jpeg",
         tag: "Novo"
       }
     ];
 
-    // Renderizar Imóveis no Catálogo
     function renderProperties(items) {
       const container = document.getElementById('properties-container');
       container.innerHTML = '';
@@ -901,7 +878,6 @@
       lucide.createIcons();
     }
 
-    // Filtrar Imóveis
     function applyFilters() {
       const category = document.getElementById('filter-category').value;
       const neighborhood = document.getElementById('filter-neighborhood').value;
@@ -922,7 +898,6 @@
       renderProperties(filtered);
     }
 
-    // Calculadora de Financiamento
     function calculateLoan() {
       const value = parseFloat(document.getElementById('calc-value').value) || 0;
       const entry = parseFloat(document.getElementById('calc-entry').value) || 0;
@@ -930,7 +905,7 @@
 
       const loanAmount = value - entry;
       const months = years * 12;
-      const monthlyRate = 0.008; // Estimativa de taxa ~9.6% ao ano
+      const monthlyRate = 0.008;
 
       if (loanAmount <= 0 || months <= 0) {
         document.getElementById('calc-result-price').innerText = 'R$ 0,00';
@@ -945,7 +920,6 @@
       });
     }
 
-    // Renderizar imóveis na inicialização
     renderProperties(properties);
   </script>
 </body>
