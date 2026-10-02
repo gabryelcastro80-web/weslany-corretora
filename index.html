@@ -267,6 +267,60 @@
       margin: 0 auto;
     }
 
+    /* ESTILOS DA GALERIA / CARROSSEL */
+    .image-slider-container {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .image-slider-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 2;
+    }
+
+    .slider-btn:hover {
+      background: var(--gold-primary);
+      color: #000;
+    }
+
+    .slider-btn.prev { left: 8px; }
+    .slider-btn.next { right: 8px; }
+
+    .slider-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
     .calculator-section {
       background: var(--bg-card);
       border-y: 1px solid var(--border-color);
@@ -486,7 +540,6 @@
       <p>Consulte nosso catálogo atualizado</p>
     </div>
 
-    <!-- MENSAGEM PADRÃO SE NÃO HOUVER IMÓVEIS -->
     <div id="catalog-container">
       <div class="empty-catalog-box">
         <i data-lucide="home" size="48" style="color: var(--gold-primary); margin-bottom: 1rem;"></i>
@@ -575,7 +628,7 @@
   <script>
     lucide.createIcons();
 
-    // LEITURA DO FICHÁRIO DADOS (imoveis.json)
+    // LEITURA DO FICHÁRIO (imoveis.json) COM SUPORTE A MÚLTIPLAS FOTOS
     fetch('./imoveis.json')
       .then(response => response.json())
       .then(properties => {
@@ -584,28 +637,79 @@
 
         let htmlContent = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">';
 
-        properties.forEach(item => {
+        properties.forEach((item, index) => {
+          // Normaliza as fotos: aceita tanto "images": ["a.jpg", "b.jpg"] quanto "image": "a.jpg" ou "foto": "a.jpg"
+          let imgList = [];
+          if (Array.isArray(item.images) && item.images.length > 0) {
+            imgList = item.images;
+          } else if (item.image) {
+            imgList = [item.image];
+          } else if (item.foto) {
+            imgList = [item.foto];
+          } else {
+            imgList = ['https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80'];
+          }
+
+          const hasMultiple = imgList.length > 1;
+
           htmlContent += `
             <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;">
-              <img src="${item.image}" alt="${item.title}" style="width: 100%; height: 220px; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80'">
+              
+              <div class="image-slider-container" id="slider-${index}">
+                <img id="img-${index}" src="${imgList[0]}" alt="${item.title || item.titulo}" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80'">
+                
+                ${hasMultiple ? `
+                  <button class="slider-btn prev" onclick="changeSlide(${index}, -1)">❮</button>
+                  <button class="slider-btn next" onclick="changeSlide(${index}, 1)">❯</button>
+                  <span class="slider-badge" id="badge-${index}">1 / ${imgList.length}</span>
+                ` : ''}
+              </div>
+
               <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                <span style="color: var(--gold-primary); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">${item.tag || 'Disponível'} • ${item.category || 'Venda'}</span>
-                <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">${item.title}</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">📍 ${item.neighborhood}</p>
-                <p style="font-size: 1.3rem; font-weight: 800; color: var(--gold-light); margin-bottom: 0.8rem;">${item.price}</p>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">🛏️ ${item.bedrooms} quartos • 🚿 ${item.bathrooms} banheiros • 📐 ${item.area}</p>
-                <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20tenho%20interesse%20no%20im%C3%B3vel:%20${encodeURIComponent(item.title)}" target="_blank" class="btn-contact" style="width: 100%; justify-content: center; margin-top: auto;">
+                <span style="color: var(--gold-primary); font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">${item.tag || item.destaque || 'Disponível'} • ${item.category || item.tipo || 'Venda'}</span>
+                <h3 style="margin: 0.5rem 0; font-size: 1.2rem;">${item.title || item.titulo}</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">📍 ${item.neighborhood || item.bairro || 'Marabá'}</p>
+                <p style="font-size: 1.3rem; font-weight: 800; color: var(--gold-light); margin-bottom: 0.8rem;">${item.price || item.preco}</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">🛏️ ${item.bedrooms || item.quartos || 0} quartos • 🚿 ${item.bathrooms || item.banheiros || 0} banheiros • 📐 ${item.area || ''}</p>
+                <a href="https://wa.me/559492209195?text=Ol%C3%A1%20Weslany,%20tenho%20interesse%20no%20im%C3%B3vel:%20${encodeURIComponent(item.title || item.titulo)}" target="_blank" class="btn-contact" style="width: 100%; justify-content: center; margin-top: auto;">
                   Tenho Interesse
                 </a>
               </div>
             </div>
           `;
+
+          // Guarda as imagens no elemento HTML para uso do carrossel
+          window[`propertyImages_${index}`] = imgList;
+          window[`currentSlide_${index}`] = 0;
         });
 
         htmlContent += '</div>';
         catalogContainer.innerHTML = htmlContent;
       })
       .catch(err => console.log('Utilizando catálogo padrão:', err));
+
+    // FUNÇÃO PARA NAVEGAR PELAS FOTOS DO CARROSSEL
+    function changeSlide(propertyIndex, direction) {
+      const images = window[`propertyImages_${propertyIndex}`];
+      if (!images || images.length <= 1) return;
+
+      let currentIndex = window[`currentSlide_${propertyIndex}`];
+      currentIndex += direction;
+
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      } else if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+
+      window[`currentSlide_${propertyIndex}`] = currentIndex;
+
+      const imgElement = document.getElementById(`img-${propertyIndex}`);
+      const badgeElement = document.getElementById(`badge-${propertyIndex}`);
+
+      if (imgElement) imgElement.src = images[currentIndex];
+      if (badgeElement) badgeElement.innerText = `${currentIndex + 1} / ${images.length}`;
+    }
 
     function calculateLoan() {
       const value = parseFloat(document.getElementById('calc-value').value) || 0;
